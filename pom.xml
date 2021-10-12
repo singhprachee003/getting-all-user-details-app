@@ -30,6 +30,19 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
+					<cloudHubDeployment>
+					    <uri>https://anypoint.mulesoft.com</uri>
+					    <muleVersion>${mule.version}</muleVersion>
+					    <!-- Deploy User Parameter -->
+					    <username>${anypoint.username}</username>
+					    <password>${anypoint.password}</password>
+					    <!-- Environment Parameter -->
+					    <environment>${cloudhub.environment}</environment>
+					    <applicationName>${cloudhub.app}</applicationName>
+					    <businessGroup>${cloudhub.bg}</businessGroup>
+					    <workerType>${cloudhub.worker}</workerType>
+					    <objectStoreV2>true</objectStoreV2>
+					</cloudHubDeployment>
 					<sharedLibraries>
 						<sharedLibrary>
 							<groupId>mysql</groupId>
@@ -64,6 +77,18 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.26</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.connectors</groupId>
+			<artifactId>mule-email-connector</artifactId>
+			<version>1.4.1</version>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>943d492a-7e94-46ec-b97c-9fa4adbf089e</groupId>
+			<artifactId>json-logger</artifactId>
+			<version>2.0.1</version>
+			<classifier>mule-plugin</classifier>
 		</dependency>
 	</dependencies>
 

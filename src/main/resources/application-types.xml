@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="delayfile" format="java">
+      <types:shape format="raml"><![CDATA[#%RAML 1.0 DataType
+type: string]]></types:shape>
+    </types:type>
+    <types:type name="samplefile" format="json">
+      <types:shape format="weave" example="examples/SampleSoap.json"><![CDATA[%dw 2.0
+
+type samplefile = {|
+  headers: {|  |}, 
+  attachments: {|  |}, 
+  body: {|
+    GetDepBoardWithDetailsResponse: {|
+      GetStationBoardResult: {|
+        generatedAt: String, 
+        locationName: String, 
+        crs: String, 
+        filterLocationName: String, 
+        filtercrs: String, 
+        nrccMessages: {| message: String |}, 
+        platformAvailable: String, 
+        trainServices: {|
+          service: {|
+            std: String, 
+            etd: String, 
+            platform: String, 
+            operator: String, 
+            operatorCode: String, 
+            serviceType: String, 
+            length: String, 
+            serviceID: String, 
+            adhocAlerts: {| adhocAlertText: String |}, 
+            rsid: String, 
+            origin: {|
+              location: {|
+                locationName: String, 
+                crs: String
+              |}
+            |}, 
+            destination: {|
+              location: {|
+                locationName: String, 
+                crs: String
+              |}
+            |}, 
+            formation: {|
+              avgLoading: String, 
+              coaches: {|
+                coach: {|
+                  coachClass: String, 
+                  toilet: String
+                |}
+              |}
+            |}, 
+            subsequentCallingPoints: {|
+              callingPointList: {|
+                callingPoint: {|
+                  locationName: String, 
+                  crs: String, 
+                  st: String, 
+                  et: String, 
+                  length: String, 
+                  formation: {|
+                    avgLoading: String, 
+                    coaches: {|
+                      coach: {|
+                        coachClass: String, 
+                        toilet: String
+                      |}
+                    |}
+                  |}, 
+                  adhocAlerts: {| adhocAlertText: String |}
+                |}
+              |}
+            |}
+          |}
+        |}
+      |}
+    |}
+  |}
+|} {"example": "{\\\"headers\\\":{},\\\"attachments\\\":{},\\\"body\\\":{\\\"GetDepBoardWithDetailsResponse\\\":{\\\"GetStationBoardResult\\\":{\\\"generatedAt\\\":\\\"2021-05-27T05:58:00.3122244+01:00\\\",\\\"locationName\\\":\\\"London Bridge\\\",\\\"crs\\\":\\\"LBG\\\",\\\"filterLocationName\\\":\\\"London Cannon Street\\\",\\\"filtercrs\\\":\\\"CST\\\",\\\"nrccMessages\\\":{\\\"message\\\":\\\"\\\\nA member of signalling staff has been taken ill at Bognor Regis. Consequently, trains in the area may be cancelled or revised. More details can be found in <a href=\\\\\\\"http:\\/\\/nationalrail.co.uk\\/service_disruptions\\/272026.aspx \\\\\\\">Latest Travel News.<\\/a>\\\"},\\\"platformAvailable\\\":\\\"true\\\",\\\"trainServices\\\":{\\\"service\\\":{\\\"std\\\":\\\"07:24\\\",\\\"etd\\\":\\\"On time\\\",\\\"platform\\\":\\\"3\\\",\\\"operator\\\":\\\"Southeastern\\\",\\\"operatorCode\\\":\\\"SE\\\",\\\"serviceType\\\":\\\"train\\\",\\\"length\\\":\\\"5\\\",\\\"serviceID\\\":\\\"0mVxjc9\\/VYqg8c017qRsSA==\\\",\\\"adhocAlerts\\\":{\\\"adhocAlertText\\\":\\\" Will be formed of 5 coaches instead of 10. \\\"},\\\"rsid\\\":\\\"SE551800\\\",\\\"origin\\\":{\\\"location\\\":{\\\"locationName\\\":\\\"Dartford\\\",\\\"crs\\\":\\\"DFD\\\"}},\\\"destination\\\":{\\\"location\\\":{\\\"locationName\\\":\\\"London Cannon Street\\\",\\\"crs\\\":\\\"CST\\\"}},\\\"formation\\\":{\\\"avgLoading\\\":\\\"28\\\",\\\"coaches\\\":{\\\"coach\\\":{\\\"coachClass\\\":\\\"Standard\\\",\\\"toilet\\\":\\\"None\\\"}}},\\\"subsequentCallingPoints\\\":{\\\"callingPointList\\\":{\\\"callingPoint\\\":{\\\"locationName\\\":\\\"London Cannon Street\\\",\\\"crs\\\":\\\"CST\\\",\\\"st\\\":\\\"06:30\\\",\\\"et\\\":\\\"On time\\\",\\\"length\\\":\\\"5\\\",\\\"formation\\\":{\\\"avgLoading\\\":\\\"28\\\",\\\"coaches\\\":{\\\"coach\\\":{\\\"coachClass\\\":\\\"Standard\\\",\\\"toilet\\\":\\\"None\\\"}}},\\\"adhocAlerts\\\":{\\\"adhocAlertText\\\":\\\" Will be formed of 5 coaches instead of 10. \\\"}}}}}}}}}}"}
+
+]]></types:shape>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#d0373f3f-23d8-4e17-850d-f6c79261da65">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="samplefile"/>
+        </types:message>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>
