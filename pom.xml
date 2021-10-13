@@ -37,10 +37,10 @@
 					    <username>${anypoint.username}</username>
 					    <password>${anypoint.password}</password>
 					    <!-- Environment Parameter -->
-					    <environment>${cloudhub.environment}</environment>
-					    <applicationName>${cloudhub.app}</applicationName>
-					    <businessGroup>${cloudhub.bg}</businessGroup>
-					    <workerType>${cloudhub.worker}</workerType>
+					    <environment>${env}</environment>
+					    <applicationName>${appname}</applicationName>
+					    <businessGroup>${business}</businessGroup>
+					    <workerType>${vCore}</workerType>
 					    <objectStoreV2>true</objectStoreV2>
 					</cloudHubDeployment>
 					<sharedLibraries>
